@@ -52,8 +52,8 @@ function initMobileNav(){
     nav.style.top = "64px";
     nav.style.padding = "10px";
     nav.style.borderRadius = "14px";
-    nav.style.background = "rgba(5,6,11,.85)";
-    nav.style.border = "1px solid rgba(255,255,255,.12)";
+    nav.style.background = "rgba(255,255,255,.75)";
+    nav.style.border = "1px solid rgba(0,0,0,.12)";
     nav.style.backdropFilter = "blur(14px)";
   });
 
@@ -87,12 +87,12 @@ function repoCard(r){
           <div class="repo__name">${r.name}</div>
           <div class="repo__desc">${desc}</div>
         </div>
-        <a class="a" target="_blank" rel="noreferrer" href="${r.html_url}">code</a>
+        <a class="btn linkbtn btn--gun" target="_blank" rel="noreferrer" href="${r.html_url}" style="padding:10px 12px;border-radius:12px">Code</a>
       </div>
       <div class="repo__meta">
         ${lang}
         <span class="pill">★ ${r.stargazers_count ?? 0}</span>
-        <span class="pill">updated ${fmt(r.updated_at)}</span>
+        <span class="pill">Updated ${fmt(r.updated_at)}</span>
       </div>
     </article>
   `;
@@ -119,14 +119,15 @@ function applyFilters(repos){
 }
 
 async function loadGitHub(){
-  const note = $("#note");
+  const warn = $("#warn");
+
   const [pRes, rRes] = await Promise.all([
     fetch(API_PROFILE, {headers:{Accept:"application/vnd.github+json"}}),
     fetch(API_REPOS, {headers:{Accept:"application/vnd.github+json"}}),
   ]);
 
   if(!pRes.ok || !rRes.ok){
-    if(note) note.hidden = false;
+    if(warn) warn.hidden = false;
     return;
   }
 
@@ -178,7 +179,7 @@ async function loadGitHub(){
   initMobileNav();
 
   loadGitHub().catch(()=> {
-    const note = $("#note");
-    if(note) note.hidden = false;
+    const warn = $("#warn");
+    if(warn) warn.hidden = false;
   });
 })();
