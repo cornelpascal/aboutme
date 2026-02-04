@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,22 +16,19 @@
   <div class="bg" aria-hidden="true">
     <div class="bg__noise"></div>
     <div class="bg__vignette"></div>
-
-    <!-- Your sigils (parallax via JS) -->
-    <img class="sigil sigil--blade" id="sigilBlade" src="./assets/sigil-1.webp" alt="" />
-    <img class="sigil sigil--gun" id="sigilGun" src="./assets/sigil-2.jpg" alt="" />
-
     <div class="bg__scanlines"></div>
   </div>
 
   <header class="top">
     <a class="brand" href="./">cornelpascal</a>
+
     <nav class="nav" id="nav">
       <a href="#about">About</a>
       <a href="#featured">Featured</a>
       <a href="#repos">Repos</a>
       <a href="#contact">Contact</a>
     </nav>
+
     <button class="navbtn" id="navBtn" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -118,7 +116,7 @@
           <h3 class="h3">This site</h3>
           <ul class="list">
             <li>Loads profile + repos from GitHub API</li>
-            <li>Scroll reveal animation (IO) + parallax sigils</li>
+            <li>Scroll reveal animation + sigil parallax</li>
             <li>Project Pages-safe relative paths</li>
           </ul>
         </article>

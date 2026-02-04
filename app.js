@@ -1,9 +1,9 @@
+// app.js
 const USER = "cornelpascal";
 const API_PROFILE = `https://api.github.com/users/${USER}`;
 const API_REPOS = `https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`;
 
 const $ = (s) => document.querySelector(s);
-const $$ = (s) => Array.from(document.querySelectorAll(s));
 
 function fmt(d){
   const dt = new Date(d);
@@ -63,27 +63,6 @@ function initMobileNav(){
       nav.style.display = "none";
     }
   });
-}
-
-/* Parallax drift for sigils */
-function initSigilParallax(){
-  const blade = $("#sigilBlade");
-  const gun = $("#sigilGun");
-  if(!blade || !gun) return;
-
-  const apply = () => {
-    const y = window.scrollY || 0;
-    const vh = window.innerHeight || 1;
-
-    // slow drift by scroll depth
-    const t = y / vh;
-
-    blade.style.transform = `translate3d(${t * 6}px, ${t * 22}px, 0) rotate(10deg)`;
-    gun.style.transform = `translate3d(${-t * 10}px, ${-t * 16}px, 0) rotate(-6deg)`;
-  };
-
-  document.addEventListener("scroll", apply, {passive:true});
-  apply();
 }
 
 /* GitHub rendering */
@@ -160,12 +139,10 @@ async function loadGitHub(){
   $("#followers").textContent = profile.followers ?? "—";
   $("#updated").textContent = repos?.[0]?.updated_at ? fmt(repos[0].updated_at) : "—";
 
-  // chips
   const chips = $("#langChips");
   const langs = topLangs(repos);
   if(chips) chips.innerHTML = langs.map(([l,n])=>chipHTML(l,n)).join("");
 
-  // filter dropdown
   const sel = $("#lang");
   if(sel){
     langs.forEach(([l])=>{
@@ -180,7 +157,7 @@ async function loadGitHub(){
   const render = () => {
     const filtered = applyFilters(repos);
     grid.innerHTML = filtered.map(repoCard).join("");
-    initReveal(grid); // reveal newly created cards
+    initReveal(grid);
   };
 
   ["q","lang","sort"].forEach(id=>{
@@ -199,7 +176,6 @@ async function loadGitHub(){
   initProgress();
   initReveal();
   initMobileNav();
-  initSigilParallax();
 
   loadGitHub().catch(()=> {
     const note = $("#note");

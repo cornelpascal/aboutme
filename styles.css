@@ -1,4 +1,4 @@
-/* ===== Base ===== */
+/* styles.css */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 :root{
@@ -26,8 +26,23 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation M
 .progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.06);z-index:50}
 .progress__bar{height:100%;width:0;background:linear-gradient(90deg,#fff,rgba(255,255,255,.2))}
 
-/* ===== Background (cybersigil) ===== */
-.bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+/* ===== Background layer ===== */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
+/* Tall sigil as background */
+.bg::before{
+  content:"";
+  position:absolute;
+  inset:-10%;
+  background-image: url("./assets/sigil-1.webp");
+  background-repeat:no-repeat;
+  background-position: 85% 20%;
+  background-size: min(760px, 95vw);
+  opacity:.22;
+  filter: contrast(1.2) brightness(1.15);
+  mix-blend-mode: screen;
+  transform: rotate(8deg);
+  pointer-events:none;
+}
 .bg__vignette{
   position:absolute;inset:-10%;
   background: radial-gradient(circle at 50% 30%, rgba(255,255,255,.05), transparent 55%),
@@ -55,30 +70,6 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation M
   );
   opacity:.10;
   pointer-events:none;
-}
-
-/* The sigils (your images) */
-.sigil{
-  position:absolute;
-  pointer-events:none;
-  opacity:.28;
-  filter: contrast(1.2) brightness(1.1);
-  mix-blend-mode:screen;
-  transform: translate3d(0,0,0);
-  will-change: transform;
-}
-.sigil--blade{
-  right:-6vw;
-  top:6vh;
-  width:min(520px,70vw);
-  rotate: 10deg;
-}
-.sigil--gun{
-  left:-10vw;
-  bottom:-10vh;
-  width:min(820px,95vw);
-  rotate: -6deg;
-  opacity:.22;
 }
 
 /* ===== Header ===== */
@@ -156,28 +147,46 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation M
 }
 .sub{margin:0;color:rgba(255,255,255,.70);line-height:1.7;max-width:65ch}
 .cta{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+
+/* ===== Buttons (gun texture, rotated + cropped) ===== */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   padding:12px 14px;border-radius:14px;
   border:1px solid rgba(255,255,255,.14);
   background:rgba(255,255,255,.05);
   transition:transform .2s ease, background .2s ease, border-color .2s ease, filter .2s ease;
-}
-.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.22)}
-.btn--ink{
-  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
   position:relative;
+  overflow:hidden;
+  isolation:isolate;
 }
-.btn--ink::after{
+.btn::before{
+  content:"";
+  position:absolute;
+  inset:-40% -35%;
+  background-image:url("./assets/sigil-2.jpg");
+  background-repeat:no-repeat;
+  background-size:520px auto;
+  background-position:35% 55%;
+  transform:rotate(-18deg);
+  opacity:.18;
+  filter:contrast(1.35) brightness(1.2);
+  mix-blend-mode:screen;
+  z-index:-1;
+}
+.btn::after{
   content:"";
   position:absolute;inset:-1px;
-  border-radius:14px;
+  border-radius:inherit;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(255,255,255,.25), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+  opacity:.55;
   pointer-events:none;
-  opacity:.0;
-  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.35), transparent 55%);
-  transition:opacity .2s ease;
+  z-index:-1;
 }
-.btn--ink:hover::after{opacity:.85}
+.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.22)}
+.btn:hover::before{opacity:.26;transform:rotate(-18deg) scale(1.03)}
+.btn--ink{background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.04))}
 
 /* Glitch text */
 .glitch{position:relative;display:inline-block}
@@ -185,12 +194,22 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation M
   content:attr(data-text);
   position:absolute;left:0;top:0;
   opacity:.35;
-  clip-path: inset(0 0 0 0);
   pointer-events:none;
 }
 .glitch::before{transform:translate3d(-1px,0,0)}
 .glitch::after{transform:translate3d(1px,0,0)}
+
 .hero__right{display:flex;justify-content:flex-end}
+
+/* ===== Chips ===== */
+.chips{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.pill{
+  padding:6px 10px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.16);
+  color:rgba(255,255,255,.76);
+  font-size:12px;
+}
 
 /* ===== Cards ===== */
 .card{
@@ -316,11 +335,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation M
 .repo__name{font-weight:900;letter-spacing:.03em;text-transform:lowercase}
 .repo__desc{margin-top:8px;color:rgba(255,255,255,.70);line-height:1.55;min-height:44px}
 .repo__meta{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;color:rgba(255,255,255,.72);font-size:12px}
-.pill{
-  padding:6px 10px;border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.16);
-}
+
 .note{
   margin-top:12px;
   padding:12px;border-radius:16px;
@@ -372,8 +387,6 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation M
   .cards3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .repoGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .scrolldown{display:none}
-  .sigil--blade{right:-22vw;opacity:.22}
-  .sigil--gun{left:-25vw;opacity:.18}
 }
 @media (max-width: 680px){
   .nav{display:none}
