@@ -3,100 +3,212 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cornel Pascal — Portfolio</title>
-  <meta name="description" content="Cornel Pascal — projects and repos from GitHub." />
-
-  <!-- IMPORTANT: relative paths so it works on /aboutme/ -->
+  <title>Cornel Pascal — Cybersigil Portfolio</title>
+  <meta name="description" content="Cornel Pascal — projects pulled live from GitHub, wrapped in a cybersigil aesthetic." />
   <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
-  <div class="progress"><div id="bar"></div></div>
+  <div class="progress" aria-hidden="true"><div class="progress__bar" id="bar"></div></div>
+
+  <!-- Background layer -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__noise"></div>
+    <div class="bg__vignette"></div>
+
+    <!-- Your sigils (parallax via JS) -->
+    <img class="sigil sigil--blade" id="sigilBlade" src="./assets/sigil-1.webp" alt="" />
+    <img class="sigil sigil--gun" id="sigilGun" src="./assets/sigil-2.jpg" alt="" />
+
+    <div class="bg__scanlines"></div>
+  </div>
 
   <header class="top">
     <a class="brand" href="./">cornelpascal</a>
-    <nav class="nav">
+    <nav class="nav" id="nav">
       <a href="#about">About</a>
+      <a href="#featured">Featured</a>
       <a href="#repos">Repos</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="navbtn" id="navBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="heroText">
-        <p class="pill">Student • Builder • ML + systems</p>
-        <h1>Hi, I’m <span class="grad">Cornel</span>.</h1>
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero section">
+      <div class="hero__left reveal">
+        <div class="kicker">
+          <span class="k-dot"></span>
+          <span>cybersigil • student • builder</span>
+        </div>
+
+        <h1 class="title">
+          I’m <span class="glitch" data-text="Cornel">Cornel</span> —
+          I learn by shipping.
+        </h1>
+
         <p class="sub">
-          This page is hosted on GitHub Pages and loads my public repos live from the GitHub API.
+          This site pulls my public work live from GitHub and frames it in a dark, inked interface.
+          Scroll to summon the repos.
         </p>
-        <div class="btns">
-          <a class="btn primary" href="#repos">Explore repos</a>
+
+        <div class="cta">
+          <a class="btn btn--ink" href="#repos">Enter repos</a>
           <a class="btn" href="https://github.com/cornelpascal" target="_blank" rel="noreferrer">GitHub</a>
         </div>
+
+        <div class="chips" id="langChips" aria-label="Top languages"></div>
       </div>
 
-      <div class="card">
-        <div class="row">
-          <div class="avatar">
-            <img src="./assets/avatar.png" alt="" onerror="this.style.display='none'">
+      <div class="hero__right reveal">
+        <div class="card card--profile">
+          <div class="row">
+            <div class="mono">PROFILE</div>
+            <div class="hairline"></div>
           </div>
-          <div>
-            <div class="name" id="name">cornelpascal</div>
-            <div class="meta" id="meta">Loading profile…</div>
+
+          <div class="profile">
+            <div class="profile__name" id="name">cornelpascal</div>
+            <div class="profile__meta" id="meta">Loading profile…</div>
           </div>
-        </div>
-        <div class="stats">
-          <div><div class="k" id="repoCount">—</div><div class="v">Public repos</div></div>
-          <div><div class="k" id="followers">—</div><div class="v">Followers</div></div>
-          <div><div class="k" id="updated">—</div><div class="v">Latest update</div></div>
+
+          <div class="stats">
+            <div class="stat"><div class="k" id="repoCount">—</div><div class="v">repos</div></div>
+            <div class="stat"><div class="k" id="followers">—</div><div class="v">followers</div></div>
+            <div class="stat"><div class="k" id="updated">—</div><div class="v">latest update</div></div>
+          </div>
+
+          <div class="sigilHint">
+            <div class="sigilHint__title">SCROLL RITUAL</div>
+            <div class="sigilHint__text">reveal cards • distort edges • drift sigils</div>
+          </div>
         </div>
       </div>
 
-      <a class="scrollHint" href="#about" aria-label="Scroll down">↓ Scroll</a>
+      <a class="scrolldown" href="#about" aria-label="Scroll down">
+        <span class="scrolldown__mouse"></span>
+        <span class="scrolldown__text">scroll</span>
+      </a>
     </section>
 
-    <section id="about" class="section reveal">
-      <h2>About</h2>
-      <p>
-        Edit this section to your style. Below, the repos list is generated dynamically from GitHub.
-      </p>
-      <ul>
-        <li>Algorithms & problem solving</li>
-        <li>Networking tooling & systems fundamentals</li>
-        <li>ML experiments (similarity, clustering, recommenders)</li>
-      </ul>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="section__head reveal">
+        <h2 class="h2">About</h2>
+        <p class="p">
+          Replace this with your real bio (program, interests, what you’re building next).
+          Below is a live repo feed + filters.
+        </p>
+      </div>
+
+      <div class="grid2">
+        <article class="card reveal">
+          <h3 class="h3">Focus</h3>
+          <ul class="list">
+            <li>Algorithms & problem solving</li>
+            <li>Networking tools & systems fundamentals</li>
+            <li>ML experiments (similarity, clustering, recommenders)</li>
+          </ul>
+        </article>
+
+        <article class="card reveal">
+          <h3 class="h3">This site</h3>
+          <ul class="list">
+            <li>Loads profile + repos from GitHub API</li>
+            <li>Scroll reveal animation (IO) + parallax sigils</li>
+            <li>Project Pages-safe relative paths</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
+    <!-- FEATURED -->
+    <section id="featured" class="section">
+      <div class="section__head reveal">
+        <h2 class="h2">Featured</h2>
+        <p class="p">A few highlights (edit these anytime).</p>
+      </div>
+
+      <div class="cards3">
+        <article class="card reveal">
+          <div class="tag">vision • clustering</div>
+          <h3 class="h3">logo similarity AI</h3>
+          <p class="p">Logo extraction → enhancement → CNN features → clustering for visual similarity.</p>
+          <div class="actions">
+            <a class="a" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal/logo_similarity_AI">repo</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="tag">recommenders • svd</div>
+          <h3 class="h3">music pattern recognition</h3>
+          <p class="p">Cosine similarity + SVD-based recommendations over music themes.</p>
+          <div class="actions">
+            <a class="a" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal/Music-pattern-recognition-and-recomandations">repo</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="tag">networking • udp</div>
+          <h3 class="h3">udp client tooling</h3>
+          <p class="p">Scripted UDP client with multiple send modes and configurable addressing.</p>
+          <div class="actions">
+            <a class="a" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal/C_udp_server">repo</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- REPOS -->
     <section id="repos" class="section">
-      <div class="head reveal">
-        <h2>All public repos</h2>
-        <p>Search + filter. Cards animate in as you scroll.</p>
+      <div class="section__head reveal">
+        <h2 class="h2">All public repos</h2>
+        <p class="p">Search + filter + sort. Cards animate in as you scroll.</p>
       </div>
 
       <div class="controls reveal">
-        <input id="q" placeholder="Search repos…" />
-        <select id="lang"><option value="">All languages</option></select>
-        <select id="sort">
+        <input class="input" id="q" placeholder="Search repos…" />
+        <select class="select" id="lang"><option value="">All languages</option></select>
+        <select class="select" id="sort">
           <option value="updated">Sort: updated</option>
           <option value="stars">Sort: stars</option>
           <option value="name">Sort: name</option>
         </select>
       </div>
 
-      <div id="grid" class="grid"></div>
-      <div id="note" class="note" hidden>GitHub API rate-limited or unavailable. Try again later.</div>
+      <div class="repoGrid" id="grid" aria-live="polite"></div>
+      <div class="note" id="note" hidden>GitHub API rate-limited/unavailable. Try again later.</div>
     </section>
 
-    <section id="contact" class="section reveal">
-      <h2>Contact</h2>
-      <p>
-        <a href="https://github.com/cornelpascal" target="_blank" rel="noreferrer">GitHub</a>
-        · <span class="muted">Add LinkedIn / email here</span>
-      </p>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="section__head reveal">
+        <h2 class="h2">Contact</h2>
+        <p class="p">Add your links here.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card reveal">
+          <h3 class="h3">Links</h3>
+          <div class="links">
+            <a class="a" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal">GitHub</a>
+            <a class="a" href="#" onclick="alert('Edit LinkedIn/email in index.html');return false;">LinkedIn</a>
+            <a class="a" href="#" onclick="alert('Edit LinkedIn/email in index.html');return false;">Email</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h3 class="h3">Signature</h3>
+          <p class="p">“algorithms • systems • ml experiments — built in the dark.”</p>
+        </div>
+      </div>
     </section>
 
     <footer class="foot">
-      <span id="year"></span> • GitHub Pages
+      <span id="year"></span> • GitHub Pages • cybersigil skin
     </footer>
   </main>
 
