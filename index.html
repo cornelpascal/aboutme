@@ -3,273 +3,103 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Cornel Pascal — projects, experiments, and coursework." />
   <title>Cornel Pascal — Portfolio</title>
+  <meta name="description" content="Cornel Pascal — projects and repos from GitHub." />
 
-  <link rel="preconnect" href="https://api.github.com" crossorigin>
-  <link rel="stylesheet" href="styles.css" />
+  <!-- IMPORTANT: relative paths so it works on /aboutme/ -->
+  <link rel="stylesheet" href="./styles.css" />
 </head>
-
 <body>
-  <!-- Scroll progress -->
-  <div class="progress" aria-hidden="true">
-    <div class="progress__bar" id="progressBar"></div>
-  </div>
+  <div class="progress"><div id="bar"></div></div>
 
-  <!-- Ambient background -->
-  <div class="bg" aria-hidden="true">
-    <div class="bg__blob bg__blob--a"></div>
-    <div class="bg__blob bg__blob--b"></div>
-    <div class="bg__grid"></div>
-    <canvas class="bg__particles" id="particles"></canvas>
-  </div>
-
-  <header class="header">
-    <a class="brand" href="#top" aria-label="Go to top">
-      <span class="brand__dot"></span>
-      <span class="brand__text">cornelpascal</span>
-    </a>
-
+  <header class="top">
+    <a class="brand" href="./">cornelpascal</a>
     <nav class="nav">
       <a href="#about">About</a>
-      <a href="#featured">Featured</a>
       <a href="#repos">Repos</a>
       <a href="#contact">Contact</a>
     </nav>
-
-    <button class="navbtn" id="navBtn" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero section">
-      <div class="hero__left">
-        <p class="kicker reveal">Student • Builder • Curious about systems + ML</p>
-        <h1 class="title reveal">
-          Hi, I’m <span class="grad">Cornel</span> —
-          I ship projects and learn by building.
-        </h1>
-        <p class="subtitle reveal">
-          This site pulls my public work live from GitHub and highlights a few projects I’m proud of.
+  <main>
+    <section class="hero">
+      <div class="heroText">
+        <p class="pill">Student • Builder • ML + systems</p>
+        <h1>Hi, I’m <span class="grad">Cornel</span>.</h1>
+        <p class="sub">
+          This page is hosted on GitHub Pages and loads my public repos live from the GitHub API.
         </p>
-
-        <div class="cta reveal">
-          <a class="btn btn--primary" href="#repos">Explore repos</a>
-          <a class="btn btn--ghost" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal">
-            GitHub profile
-          </a>
-        </div>
-
-        <div class="chips reveal" id="langChips" aria-label="Top languages"></div>
-      </div>
-
-      <div class="hero__right reveal">
-        <div class="card card--hero">
-          <div class="card__row">
-            <div class="avatar" id="avatar" aria-label="Avatar">
-              <!-- Optional: place assets/avatar.png; JS will replace with GitHub avatar if available -->
-              <img src="assets/avatar.png" alt="" onerror="this.style.display='none'">
-            </div>
-            <div class="who">
-              <div class="who__name" id="name">cornelpascal</div>
-              <div class="who__meta" id="meta">Loading GitHub profile…</div>
-            </div>
-          </div>
-
-          <div class="stats" id="stats">
-            <div class="stat"><div class="stat__k" id="repoCount">—</div><div class="stat__v">Public repos</div></div>
-            <div class="stat"><div class="stat__k" id="followerCount">—</div><div class="stat__v">Followers</div></div>
-            <div class="stat"><div class="stat__k" id="updatedAt">—</div><div class="stat__v">Latest update</div></div>
-          </div>
-
-          <div class="mini">
-            <div class="mini__label">Now playing</div>
-            <div class="mini__value" id="nowPlaying">Scrolling animations ✨</div>
-          </div>
+        <div class="btns">
+          <a class="btn primary" href="#repos">Explore repos</a>
+          <a class="btn" href="https://github.com/cornelpascal" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </div>
 
-      <a class="scrolldown" href="#about" aria-label="Scroll down">
-        <span class="scrolldown__mouse"></span>
-        <span class="scrolldown__text">Scroll</span>
-      </a>
+      <div class="card">
+        <div class="row">
+          <div class="avatar">
+            <img src="./assets/avatar.png" alt="" onerror="this.style.display='none'">
+          </div>
+          <div>
+            <div class="name" id="name">cornelpascal</div>
+            <div class="meta" id="meta">Loading profile…</div>
+          </div>
+        </div>
+        <div class="stats">
+          <div><div class="k" id="repoCount">—</div><div class="v">Public repos</div></div>
+          <div><div class="k" id="followers">—</div><div class="v">Followers</div></div>
+          <div><div class="k" id="updated">—</div><div class="v">Latest update</div></div>
+        </div>
+      </div>
+
+      <a class="scrollHint" href="#about" aria-label="Scroll down">↓ Scroll</a>
     </section>
 
-    <!-- About -->
-    <section class="section" id="about">
-      <div class="section__head reveal">
-        <h2>About</h2>
-        <p>
-          Replace this with your bio (what you study, what you’re into, what you want to build next).
-          The project cards below are auto-generated from your public GitHub repos.
-        </p>
-      </div>
-
-      <div class="grid2">
-        <article class="card reveal">
-          <h3>What I’m into</h3>
-          <ul class="bullets">
-            <li>Systems & networking fundamentals</li>
-            <li>Algorithms and problem solving</li>
-            <li>ML experiments (similarity, clustering, recommendations)</li>
-          </ul>
-        </article>
-
-        <article class="card reveal">
-          <h3>What this site does</h3>
-          <ul class="bullets">
-            <li>Fetches profile + repos via the GitHub API</li>
-            <li>Builds a live “Repos” section with filters and search</li>
-            <li>Uses scroll-reveal animations + smooth scrolling</li>
-          </ul>
-        </article>
-      </div>
+    <section id="about" class="section reveal">
+      <h2>About</h2>
+      <p>
+        Edit this section to your style. Below, the repos list is generated dynamically from GitHub.
+      </p>
+      <ul>
+        <li>Algorithms & problem solving</li>
+        <li>Networking tooling & systems fundamentals</li>
+        <li>ML experiments (similarity, clustering, recommenders)</li>
+      </ul>
     </section>
 
-    <!-- Featured -->
-    <section class="section" id="featured">
-      <div class="section__head reveal">
-        <h2>Featured projects</h2>
-        <p>Hand-picked highlights (you can edit these anytime in <code>index.html</code>).</p>
-      </div>
-
-      <div class="cards3">
-        <article class="card reveal">
-          <div class="tag">Computer Vision • Clustering</div>
-          <h3>Logo Similarity (AI)</h3>
-          <p>
-            Groups company logos by visual similarity: extracts logos from URLs, de-duplicates,
-            enhances low-res images, trains a custom CNN inspired by VGG-16, then clusters features.
-          </p>
-          <div class="card__actions">
-            <a class="link" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal/logo_similarity_AI">Repo</a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="tag">Numerical Methods • Data Analysis</div>
-          <h3>Data Analysis Project (MATLAB)</h3>
-          <p>
-            Coursework-style toolkit including anomaly detection, kernel regression utilities,
-            and stochastic/Markov text generation components (documented in the README).
-          </p>
-          <div class="card__actions">
-            <a class="link" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal/Data-Analysis-Project">Repo</a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="tag">Recommenders • Linear Algebra</div>
-          <h3>Music pattern recognition & recommendations</h3>
-          <p>
-            Theme recommendations using cosine similarity and Singular Value Decomposition (SVD).
-          </p>
-          <div class="card__actions">
-            <a class="link" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal/Music-pattern-recognition-and-recomandations">Repo</a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="tag">Networking • Tools</div>
-          <h3>UDP Client (protocols homework)</h3>
-          <p>
-            A UDP client script with multiple sending modes, input payload files, and configurable
-            source address/port—built for a communication protocols assignment.
-          </p>
-          <div class="card__actions">
-            <a class="link" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal/C_udp_server">Repo</a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="tag">Algorithms • Practice</div>
-          <h3>Programming algorithms practice</h3>
-          <p>
-            A repo of algorithmic solutions with written reasoning (Romanian) describing validation,
-            BFS-style construction ideas, sliding windows, and complexity notes.
-          </p>
-          <div class="card__actions">
-            <a class="link" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal/Programing_algorythms_practice">Repo</a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <div class="tag">OOP • Coursework</div>
-          <h3>OOP Assignments (fork)</h3>
-          <p>
-            Fork of an OOP homework repository: includes homework structure, skeletons, media,
-            and checkers organized by year and assignment.
-          </p>
-          <div class="card__actions">
-            <a class="link" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal/oop-asignments">Repo</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Repos -->
-    <section class="section" id="repos">
-      <div class="section__head reveal">
+    <section id="repos" class="section">
+      <div class="head reveal">
         <h2>All public repos</h2>
-        <p>
-          Live from GitHub. Search + filter by language. (If GitHub rate-limits, refresh later.)
-        </p>
+        <p>Search + filter. Cards animate in as you scroll.</p>
       </div>
 
       <div class="controls reveal">
-        <input class="input" id="search" type="search" placeholder="Search repos (name, description, language)..." autocomplete="off" />
-        <select class="select" id="language">
-          <option value="">All languages</option>
-        </select>
-        <select class="select" id="sort">
-          <option value="updated">Sort: recently updated</option>
+        <input id="q" placeholder="Search repos…" />
+        <select id="lang"><option value="">All languages</option></select>
+        <select id="sort">
+          <option value="updated">Sort: updated</option>
           <option value="stars">Sort: stars</option>
           <option value="name">Sort: name</option>
         </select>
       </div>
 
-      <div class="repoGrid" id="repoGrid" aria-live="polite"></div>
-
-      <div class="note reveal" id="apiNote" hidden>
-        <strong>Heads up:</strong> GitHub API rate limit hit. The repo list may be incomplete right now.
-      </div>
+      <div id="grid" class="grid"></div>
+      <div id="note" class="note" hidden>GitHub API rate-limited or unavailable. Try again later.</div>
     </section>
 
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <div class="section__head reveal">
-        <h2>Contact</h2>
-        <p>Drop in your links (email, LinkedIn, etc.).</p>
-      </div>
-
-      <div class="grid2">
-        <div class="card reveal">
-          <h3>Links</h3>
-          <div class="links">
-            <a class="link" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal">GitHub</a>
-            <a class="link" href="#" onclick="alert('Edit this link in index.html');return false;">LinkedIn</a>
-            <a class="link" href="#" onclick="alert('Edit this link in index.html');return false;">Email</a>
-          </div>
-        </div>
-
-        <div class="card reveal">
-          <h3>One-liner</h3>
-          <p class="muted">
-            “I like building practical stuff: algorithms, networking tools, and ML experiments.”
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
+    <section id="contact" class="section reveal">
+      <h2>Contact</h2>
       <p>
-        Built on GitHub Pages • <span id="year"></span>
+        <a href="https://github.com/cornelpascal" target="_blank" rel="noreferrer">GitHub</a>
+        · <span class="muted">Add LinkedIn / email here</span>
       </p>
+    </section>
+
+    <footer class="foot">
+      <span id="year"></span> • GitHub Pages
     </footer>
   </main>
 
-  <script src="app.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>
