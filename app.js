@@ -52,7 +52,7 @@ function initMobileNav(){
     nav.style.top = "64px";
     nav.style.padding = "10px";
     nav.style.borderRadius = "14px";
-    nav.style.background = "rgba(255,255,255,.75)";
+    nav.style.background = "rgba(255,255,255,.80)";
     nav.style.border = "1px solid rgba(0,0,0,.12)";
     nav.style.backdropFilter = "blur(14px)";
   });
@@ -87,7 +87,7 @@ function repoCard(r){
           <div class="repo__name">${r.name}</div>
           <div class="repo__desc">${desc}</div>
         </div>
-        <a class="btn linkbtn btn--gun" target="_blank" rel="noreferrer" href="${r.html_url}" style="padding:10px 12px;border-radius:12px">Code</a>
+        <a class="linkbtn btn--gun" target="_blank" rel="noreferrer" href="${r.html_url}" style="padding:10px 12px;border-radius:12px">Code</a>
       </div>
       <div class="repo__meta">
         ${lang}

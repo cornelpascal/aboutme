@@ -4,9 +4,8 @@ html{scroll-behavior:smooth}
 :root{
   --ink: rgba(15,15,18,.92);
   --muted: rgba(15,15,18,.72);
-  --hair: rgba(15,15,18,.16);
-  --panel: rgba(255,255,255,.62);
-  --panel2: rgba(255,255,255,.52);
+  --panel: rgba(255,255,255,.64);
+  --panel2: rgba(255,255,255,.54);
   --shadow: 0 30px 90px rgba(0,0,0,.35);
   --r: 18px;
   --max: 1100px;
@@ -24,18 +23,17 @@ a{color:inherit;text-decoration:none}
 .progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.25);z-index:50}
 .progress__bar{height:100%;width:0;background:rgba(15,15,18,.92)}
 
-/* Background: new collage image */
+/* Background: img5.jpg */
 .bg{
   position:fixed; inset:0; z-index:-1; overflow:hidden;
-  background:
-    url("./assets/pax-bg.jpg") center / cover no-repeat fixed;
+  background: url("./assets/img5.jpg") center / cover no-repeat fixed;
 }
 .bg__veil{
   position:absolute; inset:0;
   background:
-    radial-gradient(circle at 30% 20%, rgba(255,255,255,.35), transparent 55%),
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.38), transparent 55%),
     radial-gradient(circle at 70% 80%, rgba(0,0,0,.25), transparent 55%),
-    linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.10));
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.12));
   mix-blend-mode: overlay;
   pointer-events:none;
 }
@@ -43,7 +41,7 @@ a{color:inherit;text-decoration:none}
   position:absolute; inset:0;
   background-image:
     repeating-linear-gradient(0deg, rgba(255,255,255,.06), rgba(255,255,255,.06) 1px, transparent 1px, transparent 3px),
-    repeating-linear-gradient(90deg, rgba(0,0,0,.04), rgba(0,0,0,.04) 1px, transparent 1px, transparent 4px);
+    repeating-linear-gradient(90deg, rgba(0,0,0,.05), rgba(0,0,0,.05) 1px, transparent 1px, transparent 4px);
   opacity:.18;
   filter: blur(.2px);
   pointer-events:none;
@@ -54,7 +52,7 @@ a{color:inherit;text-decoration:none}
   position:sticky; top:0; z-index:40;
   display:flex; align-items:center; justify-content:space-between;
   padding:14px 18px;
-  background: rgba(255,255,255,.55);
+  background: rgba(255,255,255,.58);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(0,0,0,.12);
 }
@@ -72,14 +70,14 @@ a{color:inherit;text-decoration:none}
 }
 .nav a:hover{
   transform: translateY(-1px);
-  background: rgba(255,255,255,.40);
+  background: rgba(255,255,255,.42);
   border-color: rgba(0,0,0,.10);
 }
 .navbtn{
   display:none;
   width:42px; height:42px; border-radius:14px;
   border:1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.48);
+  background: rgba(255,255,255,.50);
 }
 .navbtn span{display:block;height:2px;margin:6px 10px;background:rgba(0,0,0,.75);border-radius:2px}
 
@@ -106,7 +104,7 @@ a{color:inherit;text-decoration:none}
   padding:7px 10px;
   border-radius:999px;
   border:1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.55);
+  background: rgba(255,255,255,.58);
   letter-spacing:.18em;
   font-size: 12px;
   text-transform: uppercase;
@@ -131,8 +129,8 @@ a{color:inherit;text-decoration:none}
   padding:12px 14px;
   border-radius:14px;
   border:1px solid rgba(0,0,0,.14);
-  background: rgba(255,255,255,.55);
-  color: rgba(0,0,0,.82);
+  background: rgba(255,255,255,.60);
+  color: rgba(0,0,0,.84);
   transition: transform .2s ease, background .2s ease, border-color .2s ease, filter .2s ease;
   position:relative;
   overflow:hidden;
@@ -140,7 +138,7 @@ a{color:inherit;text-decoration:none}
 }
 .btn:hover, .linkbtn:hover{
   transform: translateY(-2px);
-  background: rgba(255,255,255,.65);
+  background: rgba(255,255,255,.70);
   border-color: rgba(0,0,0,.22);
 }
 .btn--gun::before, .btn--tall::before{
@@ -153,16 +151,12 @@ a{color:inherit;text-decoration:none}
   mix-blend-mode: multiply;
   z-index:-1;
 }
-
-/* gun: rotated + cropped texture */
 .btn--gun::before{
   background-image:url("./assets/sigil-2.jpg");
   background-size: 560px auto;
   background-position: 35% 55%;
   transform: rotate(-18deg);
 }
-
-/* tall: alternate button texture */
 .btn--tall::before{
   background-image:url("./assets/sigil-1.webp");
   background-size: 520px auto;
@@ -170,7 +164,6 @@ a{color:inherit;text-decoration:none}
   transform: rotate(12deg);
   opacity:.22;
 }
-
 .btn::after, .linkbtn::after{
   content:"";
   position:absolute; inset:-1px;
@@ -188,21 +181,46 @@ a{color:inherit;text-decoration:none}
 .pill{
   padding:6px 10px;border-radius:999px;
   border:1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.55);
-  color: rgba(0,0,0,.72);
+  background: rgba(255,255,255,.62);
+  color: rgba(0,0,0,.74);
   font-size:12px;
 }
 
-/* Cards */
+/* Cards with img5 texture */
 .card{
   border-radius: var(--r);
   border:1px solid rgba(0,0,0,.14);
-  background: rgba(255,255,255,.58);
+  background: rgba(255,255,255,.62);
   box-shadow: var(--shadow);
   padding: 18px;
   position:relative;
   overflow:hidden;
+  isolation:isolate;
 }
+.card--img::before{
+  content:"";
+  position:absolute;
+  inset:-12%;
+  background-image:url("./assets/img5.jpg");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.05);
+  opacity:.22;
+  filter: contrast(1.05) brightness(1.05);
+  mix-blend-mode: multiply;
+  z-index:-1;
+}
+.card--img::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,.55), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.02));
+  opacity:.60;
+  pointer-events:none;
+  z-index:-1;
+}
+
 .card__head{display:flex;align-items:center;gap:12px}
 .label{letter-spacing:.14em;text-transform:uppercase;font-size:12px;opacity:.85}
 .line{height:1px;flex:1;background:rgba(0,0,0,.16)}
@@ -218,7 +236,7 @@ a{color:inherit;text-decoration:none}
 .stat{
   padding:12px;border-radius:16px;
   border:1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.45);
+  background: rgba(255,255,255,.52);
 }
 .stat .k{font-weight:900;font-size:18px}
 .stat .v{opacity:.72;font-size:12px;margin-top:2px;text-transform:lowercase}
@@ -226,10 +244,13 @@ a{color:inherit;text-decoration:none}
   margin-top:14px;
   padding:12px;border-radius:16px;
   border:1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.45);
+  background: rgba(255,255,255,.52);
   color: rgba(15,15,18,.78);
   line-height:1.6;
 }
+
+/* Lists */
+.list{margin:10px 0 0;padding-left:18px;color:rgba(15,15,18,.78);line-height:1.7}
 
 /* Controls / Repos */
 .controls{
@@ -243,8 +264,8 @@ a{color:inherit;text-decoration:none}
   padding:12px 12px;
   border-radius:14px;
   border:1px solid rgba(0,0,0,.14);
-  background: rgba(255,255,255,.55);
-  color: rgba(0,0,0,.82);
+  background: rgba(255,255,255,.62);
+  color: rgba(0,0,0,.84);
   outline:none;
 }
 .input::placeholder{color:rgba(0,0,0,.45)}
@@ -253,13 +274,34 @@ a{color:inherit;text-decoration:none}
 .repo{
   padding:16px;border-radius:18px;
   border:1px solid rgba(0,0,0,.14);
-  background: rgba(255,255,255,.56);
+  background: rgba(255,255,255,.60);
   box-shadow: var(--shadow);
   transition: transform .18s ease, background .18s ease, border-color .18s ease;
   position:relative;
   overflow:hidden;
+  isolation:isolate;
 }
-.repo:hover{transform:translateY(-3px);background:rgba(255,255,255,.66);border-color:rgba(0,0,0,.22)}
+.repo::before{
+  content:"";
+  position:absolute;
+  inset:-12%;
+  background-image:url("./assets/img5.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity:.18;
+  filter: contrast(1.05) brightness(1.05);
+  mix-blend-mode: multiply;
+  z-index:-1;
+}
+.repo::after{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(circle at 22% 18%, rgba(255,255,255,.50), transparent 55%);
+  opacity:.55;
+  pointer-events:none;
+  z-index:-1;
+}
+.repo:hover{transform:translateY(-3px);background:rgba(255,255,255,.70);border-color:rgba(0,0,0,.22)}
 .repo__top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
 .repo__name{font-weight:900;letter-spacing:.01em}
 .repo__desc{margin-top:8px;color:rgba(15,15,18,.76);line-height:1.55;min-height:44px}
@@ -280,19 +322,19 @@ a{color:inherit;text-decoration:none}
 .scrolldown{
   position:absolute;left:50%;bottom:22px;transform:translateX(-50%);
   display:flex;flex-direction:column;gap:8px;align-items:center;
-  color: rgba(0,0,0,.65);
+  color: rgba(0,0,0,.70);
   font-size:12px;letter-spacing:.14em;text-transform:uppercase;
 }
 .scrolldown__mouse{
   width:26px;height:42px;border-radius:999px;
   border:1px solid rgba(0,0,0,.18);
-  background: rgba(255,255,255,.40);
+  background: rgba(255,255,255,.48);
   position:relative;
 }
 .scrolldown__mouse::after{
   content:"";
   position:absolute;left:50%;top:9px;transform:translateX(-50%);
-  width:4px;height:6px;border-radius:999px;background:rgba(0,0,0,.6);
+  width:4px;height:6px;border-radius:999px;background:rgba(0,0,0,.60);
   animation:wheel 1.2s ease-in-out infinite;
 }
 @keyframes wheel{
@@ -320,7 +362,7 @@ a{color:inherit;text-decoration:none}
   .cards3{grid-template-columns:repeat(2,minmax(0,1fr))}
   .repoGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .scrolldown{display:none}
-  .foot{color:rgba(255,255,255,.72)}
+  .foot{color:rgba(255,255,255,.78)}
 }
 @media (max-width: 680px){
   .nav{display:none}
