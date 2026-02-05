@@ -1,180 +1,27 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PAX — Project Hub</title>
-  <meta name="description" content="PAX — a project hub. Live repos pulled from GitHub." />
+  <title>PAX</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
-  <div class="progress" aria-hidden="true"><div class="progress__bar" id="bar"></div></div>
-
-  <div class="bg" aria-hidden="true">
-    <div class="bg__veil"></div>
-    <div class="bg__grain"></div>
-  </div>
-
-  <header class="top">
-    <a class="brand" href="./">PAX</a>
-
-    <nav class="nav" id="nav">
-      <a href="#overview">Overview</a>
-      <a href="#repos">Repos</a>
-      <a href="#milestones">Milestones</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <button class="navbtn" id="navBtn" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
-
-  <main id="top">
-    <section class="hero section">
-      <div class="hero__left reveal">
-        <div class="kicker">PROJECT</div>
-        <h1 class="title">PAX</h1>
-        <p class="sub">
-          A single place for everything in the PAX project. All repos below are part of PAX and update live from GitHub.
-        </p>
-
-        <div class="cta">
-          <a class="btn btn--gun" href="#repos">View repos</a>
-          <a class="btn btn--tall" href="https://github.com/cornelpascal" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
-
-        <div class="chips" id="langChips" aria-label="Top languages"></div>
-      </div>
-
-      <div class="hero__right reveal">
-        <div class="card card--img">
-          <div class="card__head">
-            <div class="label">Live status</div>
-            <div class="line"></div>
-          </div>
-
-          <div class="profile">
-            <div class="profile__name" id="name">cornelpascal</div>
-            <div class="profile__meta" id="meta">Loading GitHub…</div>
-          </div>
-
-          <div class="stats">
-            <div class="stat"><div class="k" id="repoCount">—</div><div class="v">repos</div></div>
-            <div class="stat"><div class="k" id="followers">—</div><div class="v">followers</div></div>
-            <div class="stat"><div class="k" id="updated">—</div><div class="v">latest update</div></div>
-          </div>
-
-          <div class="note">
-            Scroll down to browse modules, libraries, experiments, and tooling that make up PAX.
-          </div>
-        </div>
-      </div>
-
-      <a class="scrolldown" href="#overview" aria-label="Scroll down">
-        <span class="scrolldown__mouse"></span>
-        <span class="scrolldown__text">scroll</span>
-      </a>
+  <main>
+    <section class="hero">
+      <h1>PAX</h1>
+      <p>All repositories below are part of the PAX project.</p>
+      <a href="#repos" class="btn">ENTER</a>
     </section>
 
-    <section id="overview" class="section">
-      <div class="section__head reveal">
-        <h2>Overview</h2>
-        <p>
-          PAX is built as a collection of repos. Use the list below to explore the codebase, track progress, and jump into each module.
-        </p>
+    <section id="repos">
+      <div class="controls">
+        <input id="q" placeholder="Search repos…" />
       </div>
 
-      <div class="grid2">
-        <article class="card card--img reveal">
-          <h3>What’s inside</h3>
-          <ul class="list">
-            <li>Core modules and utilities</li>
-            <li>Experiments and research prototypes</li>
-            <li>Coursework-derived components integrated into PAX</li>
-          </ul>
-        </article>
-
-        <article class="card card--img reveal">
-          <h3>How to use this page</h3>
-          <ul class="list">
-            <li>Search repos by name/description</li>
-            <li>Filter by language</li>
-            <li>Sort by recent activity or stars</li>
-          </ul>
-        </article>
-      </div>
+      <div class="repoGrid" id="grid"></div>
     </section>
-
-    <section id="repos" class="section">
-      <div class="section__head reveal">
-        <h2>PAX repos (live)</h2>
-        <p>Every project card is placed inside <strong>image6.jpg</strong>.</p>
-      </div>
-
-      <div class="controls reveal">
-        <input class="input" id="q" placeholder="Search repos…" />
-        <select class="select" id="lang"><option value="">All languages</option></select>
-        <select class="select" id="sort">
-          <option value="updated">Sort: updated</option>
-          <option value="stars">Sort: stars</option>
-          <option value="name">Sort: name</option>
-        </select>
-      </div>
-
-      <div class="repoGrid" id="grid" aria-live="polite"></div>
-      <div class="warn" id="warn" hidden>GitHub API rate-limited/unavailable. Try again later.</div>
-    </section>
-
-    <section id="milestones" class="section">
-      <div class="section__head reveal">
-        <h2>Milestones</h2>
-        <p>Replace these with your real roadmap.</p>
-      </div>
-
-      <div class="cards3">
-        <article class="card card--img reveal">
-          <h3>Phase 1</h3>
-          <p>Repo organization, consistent READMEs, and baseline build/run instructions.</p>
-        </article>
-        <article class="card card--img reveal">
-          <h3>Phase 2</h3>
-          <p>Integrations between modules + shared utilities + testing harness.</p>
-        </article>
-        <article class="card card--img reveal">
-          <h3>Phase 3</h3>
-          <p>Polish, packaging, documentation, and deployment demos.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="section__head reveal">
-        <h2>Contact</h2>
-        <p>Add your email/links here.</p>
-      </div>
-
-      <div class="grid2">
-        <div class="card card--img reveal">
-          <h3>Links</h3>
-          <div class="links">
-            <a class="linkbtn btn--gun" target="_blank" rel="noreferrer" href="https://github.com/cornelpascal">GitHub</a>
-            <a class="linkbtn btn--tall" href="#" onclick="alert('Edit your email/link here in index.html');return false;">Email</a>
-          </div>
-        </div>
-
-        <div class="card card--img reveal">
-          <h3>Notes</h3>
-          <p>Use this space for a short one-liner about what PAX is trying to accomplish.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="foot">
-      <span id="year"></span> • PAX
-    </footer>
   </main>
 
   <script src="./app.js"></script>
